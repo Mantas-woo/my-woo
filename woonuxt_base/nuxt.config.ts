@@ -4,8 +4,8 @@ import { defineNuxtConfig } from 'nuxt/config';
 const { resolve } = createResolver(import.meta.url);
 
 // Environment variables with fallbacks
-const GQL_HOST = process.env.GQL_HOST || 'http://localhost:4000/graphql';
-const APP_HOST = process.env.APP_HOST || 'http://localhost:3000';
+const GQL_HOST = process.env.GQL_HOST || 'https://woo.emisija.lt/graphql';
+const APP_HOST = process.env.APP_HOST || 'https://woo.emisija.lt';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-10',
