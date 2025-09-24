@@ -70,7 +70,7 @@ export default defineNuxtConfig({
       { code: 'it_IT', file: 'it-IT.json', name: 'Italiano 🇮🇹' },
       { code: 'pt_BR', file: 'pt-BR.json', name: 'Português 🇧🇷' },
     ],
-    langDir: 'locales',
+    langDir: 'woonuxt_base/locales',
     defaultLocale: 'en_US',
     strategy: 'no_prefix',
     restructureDir: false,
