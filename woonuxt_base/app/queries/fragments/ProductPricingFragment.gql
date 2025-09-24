@@ -1,14 +1,7 @@
-fragment ProductPricing on ProductWithPricing {
+fragment ProductPricingFragment on SimpleProduct {
+  id
   price
-  rawPrice: price(format: RAW)
   regularPrice
-  rawRegularPrice: regularPrice(format: RAW)
   salePrice
-  rawSalePrice: salePrice(format: RAW)
   onSale
-}
-fragment ProductStock on InventoriedProduct {
-  stockStatus
-  stockQuantity
-  lowStockAmount
 }

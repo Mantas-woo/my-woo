@@ -1,19 +1,22 @@
-query getCart {
+query GetCart {
   cart {
-    ...Cart
-  }
-  customer {
-    ...Customer
-  }
-  viewer {
-    ...Viewer
-  }
-  paymentGateways {
-    nodes {
-      ...PaymentGateway
+    contents {
+      itemCount
+      nodes {
+        product {
+          node {
+            databaseId
+            name
+            ... on SimpleProduct {
+              price
+            }
+          }
+        }
+        quantity
+        total
+      }
     }
-  }
-  loginClients {
-    ...LoginClient
+    subtotal
+    total
   }
 }
