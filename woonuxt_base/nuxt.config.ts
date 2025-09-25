@@ -5,7 +5,7 @@ const { resolve } = createResolver(import.meta.url);
 
 // Environment variables with fallbacks
 const GQL_HOST = process.env.GQL_HOST || 'https://woo.emisija.lt/graphql';
-const APP_HOST = process.env.APP_HOST || 'https://my-woo-5ndr.vercel.app';
+const APP_HOST = process.env.APP_HOST || 'https://woo.emisija.lt';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-10',
@@ -28,8 +28,7 @@ export default defineNuxtConfig({
     clients: {
       default: {
         host: GQL_HOST,
-        corsOptions: { mode: 'cors', credentials: 'include' },
-        headers: { Origin: APP_HOST },
+        corsOptions: { credentials: 'include' }, // mode nebūtinas
       },
     },
   },
