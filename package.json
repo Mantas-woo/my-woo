@@ -19,6 +19,7 @@
     "graphql": "^16.11.0"
   },
   "devDependencies": {
+    "@iconify-json/ion": "^1.2.6",
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "1.11.0",
     "@nuxtjs/i18n": "^10.1.0",
