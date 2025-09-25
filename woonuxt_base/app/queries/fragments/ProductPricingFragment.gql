@@ -1,7 +1,23 @@
-fragment ProductPricingFragment on SimpleProduct {
-  id
-  price
-  regularPrice
-  salePrice
-  onSale
+fragment ProductPricingFragment on ProductUnion {
+  ... on SimpleProduct {
+    id
+    price
+    regularPrice
+    salePrice
+    onSale
+  }
+  ... on VariableProduct {
+    id
+    price
+    regularPrice
+    salePrice
+  }
+  ... on ExternalProduct {
+    id
+    price
+  }
+  ... on GroupProduct {
+    id
+    price
+  }
 }

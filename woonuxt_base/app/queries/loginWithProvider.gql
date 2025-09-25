@@ -1,8 +1,9 @@
-mutation loginWithProvider($input: LoginInput!) {
-  login(input: $input) {
+mutation loginWithProvider($username: String!, $password: String!) {
+  login(input: { username: $username, password: $password }) {
     authToken
     refreshToken
     user {
+      id
       username
       email
     }
