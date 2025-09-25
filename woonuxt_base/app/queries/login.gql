@@ -1,17 +1,9 @@
-mutation Login($username: String!, $password: String!) {
-  login(input: { username: $username, password: $password }) {
-    authToken
-    refreshToken
-    user {
-      databaseId
-      username
-      email
-    }
-    customer {
-      databaseId
-      firstName
-      lastName
-      email
-    }
+login(input: { username: $username, password: $password }) {
+  authToken
+  refreshToken
+  user {
+    id
+    username
+    email
   }
 }
