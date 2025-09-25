@@ -1,0 +1,8 @@
+schema: "https://woo.emisija.lt/graphql"
+documents: "woonuxt_base/app/queries/**/*.gql"
+generates:
+  ./woonuxt_base/generated/types.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-graphql-request"
