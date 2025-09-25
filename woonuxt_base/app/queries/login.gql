@@ -1,11 +1,11 @@
 mutation Login($username: String!, $password: String!) {
-  login(input: { username: $username, password: $password }) {
+  login(input: { clientMutationId: "uniqueId", username: $username, password: $password }) {
     authToken
     refreshToken
     user {
       id
-      username
       email
+      username
     }
   }
 }
