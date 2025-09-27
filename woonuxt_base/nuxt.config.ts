@@ -3,6 +3,10 @@ import { defineNuxtConfig } from 'nuxt/config';
 
 const { resolve } = createResolver(import.meta.url);
 
+// Environment variables with fallbacks
+const GQL_HOST = process.env.GQL_HOST || 'https://woo.emisija.lt/graphql';
+const APP_HOST = process.env.APP_HOST || 'https://my-woo-5ndr.vercel.app';
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-10',
 
@@ -14,10 +18,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'default' },
   },
 
-  plugins: [
-    resolve('./app/plugins/init.ts'),
-    resolve('./app/plugins/auth.client.ts'), // <- mūsų naujas auth pluginas
-  ],
+  plugins: [resolve('./app/plugins/init.ts')],
 
   components: [{ path: resolve('./app/components'), pathPrefix: false }],
 
@@ -26,17 +27,16 @@ export default defineNuxtConfig({
   'graphql-client': {
     clients: {
       default: {
-        host: process.env.GQL_HOST,
+        host: process.env.NUXT_GQL_HOST,
         corsOptions: {
           credentials: 'include',
         },
       },
     },
-  },
 
   alias: {
     '#constants': resolve('./app/constants'),
-    '#woo': resolve('./.nuxt/gql/default'),
+    '#woo': '../.nuxt/gql/default',
   },
 
   hooks: {
@@ -60,6 +60,7 @@ export default defineNuxtConfig({
     },
   },
 
+  // Multilingual support
   i18n: {
     locales: [
       { code: 'en_US', file: 'en-US.json', name: 'English 🇺🇸' },
