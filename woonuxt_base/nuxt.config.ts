@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'default' },
   },
 
-  plugins: [resolve('./app/plugins/init.ts')],
+  plugins: [resolve('./app/plugins/init.ts'), resolve('./app/plugins/auth.client.ts')],
 
   components: [{ path: resolve('./app/components'), pathPrefix: false }],
 
@@ -27,12 +27,13 @@ export default defineNuxtConfig({
   'graphql-client': {
     clients: {
       default: {
-        host: process.env.NUXT_GQL_HOST,
+        host: GQL_HOST,
         corsOptions: {
           credentials: 'include',
         },
       },
     },
+  },
 
   alias: {
     '#constants': resolve('./app/constants'),
