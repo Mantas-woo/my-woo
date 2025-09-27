@@ -27,21 +27,27 @@ export const useAuth = () => {
       const { login } = await GqlLogin(credentials);
       if (login?.user && login?.authToken) {
         useGqlToken(login.authToken);
+
+        // Emitinam hook'ą, kad plugin'as išsaugotų token
+        const nuxtApp = useNuxtApp();
+        nuxtApp.callHook('woo:auth:login', { token: login.authToken });
+
+        // ČIA -> iškart pasikviečiam viewer (WordPress backend)
+        const { viewer: userViewer } = await GqlViewer();
+        if (userViewer) {
+          updateViewer(userViewer);
+          updateCustomer(userViewer.customer);
+        }
+
         await refreshCart();
       }
 
       isPending.value = false;
-      return {
-        success: true,
-      };
+      return { success: true };
     } catch (error: any) {
       const errorMsg = getErrorMessage(error);
       isPending.value = false;
-
-      return {
-        success: false,
-        error: errorMsg,
-      };
+      return { success: false, error: errorMsg };
     }
   };
 
